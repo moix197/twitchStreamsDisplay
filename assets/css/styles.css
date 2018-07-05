@@ -1,0 +1,247 @@
+/* Just for testing purposes CSS disregard this when using in your build*/
+body{
+	font-family: 'Roboto', sans-serif;
+	background-color: #1c1c1c;
+	margin: 0;
+	color: #fff;
+}
+
+h5, p{
+	padding: 0;
+	margin: 0;
+}
+
+h1{
+	text-transform: uppercase;
+}
+
+.text-center{
+	text-align: center;
+	color: #fff;
+}
+
+button{
+	background-color: transparent;
+	border: none;
+	color: #fff;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	outline: none;
+}
+
+button.selectedGame,
+button:hover{
+	color: #a9ff00;
+}
+
+button:active{
+	outline: none;
+}
+
+/* End of Just for testing purposes CSS */
+
+
+/* Edit any of the below styles if you want to adapt the format to your web */
+
+.outerStreams{
+	display: block;
+	text-align: center;
+}
+
+.singleStream{
+	background-color: #1c1c1c;
+	border: 1px solid #808080;
+	display: flex;
+	float: left;
+	height: 180px;
+	margin: 0.2%;
+	width: calc(32.9% - 2px);
+	cursor: pointer;
+	transition: box-shadow 0.5s, border 0.5s;
+}
+
+.singleStream:hover{
+	border: 1px solid #a9ff00;
+	-webkit-box-shadow: 0px 0px 4px 0px rgba(169,255,0,1);
+	-moz-box-shadow: 0px 0px 4px 0px rgba(169,255,0,1);
+	box-shadow: 0px 0px 4px 0px rgba(169,255,0,1);
+}
+
+.outerImageStream{
+	overflow: hidden;
+}
+
+.outerImageStream img{
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.streamDetails{
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	padding: 10px;
+}
+
+.streamDetails div{
+	padding-bottom: 5px;
+}
+
+.titleName{
+	display: flex;
+}
+
+.titleName p:first-child{
+	color: #777;
+}
+
+.titleName p:last-child{
+	padding-left: 5px;
+}
+
+.gameName p:last-child{
+	text-transform: uppercase;
+	color: #a9ff00;
+}
+
+#outerGameSelection{
+	display: flex;
+	justify-content: center;
+}
+
+#outerGameSelection img{
+	margin: 10px;
+	cursor: pointer;
+	transition: box-shadow 0.5s, border 0.5s;
+	border: 1px solid #1c1c1c;
+}
+
+img.selectedGame,
+#outerGameSelection img:hover{
+	border: 1px solid #a9ff00 !important;
+	-webkit-box-shadow: 0px 0px 4px 0px rgba(169,255,0,1);
+	-moz-box-shadow: 0px 0px 4px 0px rgba(169,255,0,1);
+	box-shadow: 0px 0px 4px 0px rgba(169,255,0,1);
+}
+
+#outerGameSelection div:hover{
+	color: #a9ff00;
+}
+
+
+.steamsLoader{
+	display: block;
+}
+
+.streamsLoader img{
+	display: block;
+	width: 50px;
+	margin: 0 auto;
+}
+
+/* Start of Iframes */
+.outerIframe{
+	height: 0;
+	overflow: hidden;
+	transition: height 1s;
+}
+
+.openedStream,
+iframe{
+	display: block;
+	width: 1280px;
+	height: 720px;
+	margin: 0 auto;
+}
+/* End of Iframe */
+
+.closeStreamBtn{
+	display: none;
+	background-color: #a9ff00;
+	color: #1c1c1c;
+	margin:0 auto;
+	padding: 15px;
+	border: 1px solid #1c1c1c;
+	margin-bottom: 5px;
+}
+
+.closeStreamBtn:hover{
+	background-color: #1c1c1c;
+	color: #a9ff00;
+	border: 1px solid #a9ff00;
+}
+
+/* Responsive Rules */
+@media screen and (max-width:1650px) {
+	
+	.singleStream{
+		width: calc(49.6% - 2px);
+	}
+
+}
+
+@media screen and (max-width:1279px) {
+	.openedStream,
+	iframe{
+		width: 760px;
+		height: 428px;
+	}
+}
+
+@media screen and (max-width:1100px) {
+	
+	.singleStream{
+		margin:1.5%;
+		width: calc(30.3% - 2px);
+		flex-flow: column;
+		height: auto
+	}
+
+	.streamDetails{
+		height: 140px;
+	}
+
+}
+
+@media screen and (max-width:759px) {
+	
+	.singleStream{
+		width: calc(47% - 2px);
+	}
+
+	#outerGameSelection{
+		display: block;
+		width: 100%;
+	}
+
+	#outerGameSelection button{
+		width: 100%;
+		height: 30px;
+	}
+
+	#outerGameSelection img{
+		width: calc(17% - 2px);
+		margin: 1.5%;
+	}
+
+	.openedStream,
+	iframe{
+		width: 520px;
+		height: 293px;
+	}
+}
+
+@media screen and (max-width:520px) {
+	
+	.singleStream{
+		margin: 4%;
+		width: calc(92% - 2px);
+	}
+
+	.openedStream,
+	iframe{
+		width: 100%;
+	}
+
+}
