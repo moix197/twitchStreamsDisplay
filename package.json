@@ -1,0 +1,29 @@
+{
+  "name": "twitch_streams",
+  "version": "1.0.0",
+  "description": "Display the twitch streams in your web, 100% editable css so it can match your web styles.",
+  "scripts": {
+    "test": "test",
+    "build": "webpack",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moix197/twitchStreamsDisplay.git"
+  },
+  "author": "Moises Montilla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moix197/twitchStreamsDisplay/issues"
+  },
+  "homepage": "https://moix197.github.io/twitch_streams",
+  "devDependencies": {
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "gh-pages": "^2.0.1",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {}
+}

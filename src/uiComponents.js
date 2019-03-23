@@ -35,7 +35,7 @@ const uiComponents = {
 
 	streamClickEvents(streamId){
 		streamId = streamId.split('_').join('%20');
-		var	channel = 'http://player.twitch.tv/?channel='+streamId;
+		var	channel = 'https://player.twitch.tv/?channel='+streamId;
 		document.getElementById('liveVideoIframe').setAttribute('src',channel);
 		document.getElementById('outerIframe').classList.add('openedStream');
 		document.getElementById('closeStream').style.display = 'block';
@@ -49,9 +49,9 @@ const uiComponents = {
         let gameName = itemId.replace(/_/g,'%20');
 
         if(gameName == 'All'){
-            this.apiCallUrl = 'https://api.twitch.tv/kraken/streams?client_id=kcrh2z2tj9qqs1asztf6n755zmwspns';
+            this.apiCallUrl = 'https://api.twitch.tv/kraken/streams?client_id=kcrh2z2tj9qqs1asztf6n755zmwspns'; //replace the {CLIENT_ID_HERE} with your twitch API client id
         }else{
-            this.apiCallUrl = 'https://api.twitch.tv/kraken/streams?game='+gameName+'&client_id=kcrh2z2tj9qqs1asztf6n755zmwspns';
+            this.apiCallUrl = 'https://api.twitch.tv/kraken/streams?game='+gameName+'&client_id=kcrh2z2tj9qqs1asztf6n755zmwspns'; //replace the {CLIENT_ID_HERE} with your twitch API client id
         }
         
         document.getElementById(this.activeTab).classList.remove("selectedGame");
