@@ -1,10 +1,21 @@
+"use strict"
+import loaderImg from './loader.gif';
+
 const uiComponents = {
-	outerElement: document.getElementById('outerStreams'),
-	loaderElement: document.getElementById('streamsLoader'),
+	parentElement: false,
+	outerElement: false,
+	loaderElement: false,
 	btnElements: ['All'], //leave the All element, as it wont come from the API
 	activeTab: 'All',//this is the default activeTab, leave it as it's
 	streamsData: false,
 	buttonsData: false,
+
+	initComponents(element){
+		this.parentElement = document.getElementById(element);
+		this.initialRender();
+		this.outerElement = document.getElementById('outerStreams');
+		this.loaderElement = document.getElementById('streamsLoader');
+	},
 
 	initGamesSelectionBar(data){
         this.buttonsData = data;
@@ -66,7 +77,6 @@ const uiComponents = {
 		//here we map through the streams array to render each stream and
         //set the proper click event.
 		this.buttonsData.top.map((element) =>{
-
             let itemId = element.game.name.replace(/ /g,'_');
 			this.renderSingleSelectionBtn(element,itemId);
 			this.setClickEvent(itemId,(item) => {
@@ -141,7 +151,7 @@ const uiComponents = {
 			let viewersLayoutContainer = document.createElement('p');
 			viewersLayoutContainer.innerHTML = 'Viewers: ';
 			let viewersNameContainer = document.createElement('p');
-	
+			
 			this.outerElement.append(SingleStream);
 				SingleStream.append(imageStream);
 				SingleStream.append(outerImageStream);
@@ -163,6 +173,42 @@ const uiComponents = {
 						languageContainer.append(languageLayoutContainer);
 						languageContainer.append(languageNameContainer);
 							languageContainer.append(element.channel.language.toUpperCase());
+	},
+
+	initialRender(){
+		if( this.showGamesBar ){
+			//if the option "showGamesBar" is passed as true in the new instance object
+			//we create the element and append it
+			let outerGameSelection = document.createElement('div');
+			outerGameSelection.setAttribute("id", "outerGameSelection");
+			this.parentElement.append(outerGameSelection);
+
+			let gameSelectionAllBtn = document.createElement('button');
+			gameSelectionAllBtn.innerHTML = 'All';
+			gameSelectionAllBtn.className = 'selectionBtn selectedGame'
+			gameSelectionAllBtn.setAttribute('id', 'All');
+			outerGameSelection.append(gameSelectionAllBtn);
+		}
+
+		if( this.showStreams ){
+			//if the option "showStreams" is passed as true in the new instance object
+			//we create the element and append it
+			let outerStreams = document.createElement('div');
+			outerStreams.setAttribute('id', 'outerStreams');
+			this.parentElement.append(outerStreams);
+
+			let outerStreamLoaderImg = document.createElement('div');
+			outerStreamLoaderImg.className = 'streamsLoader';
+			outerStreamLoaderImg.setAttribute('id', 'streamsLoader');
+			this.parentElement.append(outerStreamLoaderImg);
+
+			let StreamLoaderImg = document.createElement('img');
+			StreamLoaderImg.setAttribute('id', 'loaderGif');
+			StreamLoaderImg.setAttribute('src', loaderImg);
+			outerStreamLoaderImg.append(StreamLoaderImg);
+		}
+
+		
 	},
 
 	initFallback(){
