@@ -7,34 +7,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body style="display: none">
-	<div class="text-center">
-		<h1>Popular Streams</h1>
-	</div>
-
-	<div id="outerGameSelection">
-		<button class="selectionBtn selectedGame" id="All">All</button>
-	</div>
-	<div id="outerIframe" class="outerIframe">
-		<!-- This is where the clicked streams are shown, leave the src attr empty -->
-		<iframe
-			id="liveVideoIframe"
-		    src=""
-		    frameborder="0"
-		    scrolling="no"
-		    allowfullscreen="true">
-		</iframe>
-	</div>
-	<div id="outerCloseStreamBtn">
-		<p>&nbsp;</p>
-		<button id="closeStream" class="closeStreamBtn">Close Stream</button>
-		<p>&nbsp;</p>
-	</div>
-	<div id="streamsLoader" class="streamsLoader">
-		<!-- You can chance this gif image to match your web -->
-		<img id="loaderGif">
-	</div>
-	<div id="outerStreams" class="outerStreams">
-		<!-- This is where the selected game streams will be rendered -->
+	<div id="outerAppContainer">
+		<div id="outerCloseStreamBtn">
+			<button id="closeStreamButton" class="closeStreamBtn">Close Stream</button>
+		</div>
 	</div>
 	<script src="bundle.js" ></script>
 </body>
