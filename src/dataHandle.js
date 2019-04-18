@@ -3,19 +3,19 @@ const dataHandle = {
 	//this object handle the data that comes from the "backend"
 	//and initialize our UI once we get the streams and game button data
 
-	apiCallUrl: 'https://api.twitch.tv/kraken/streams?client_id=kcrh2z2tj9qqs1asztf6n755zmwspns', // replace the {CLIENT_ID_HERE} with your twitch API client id
+	apiCallUrl: false, // replace the {CLIENT_ID_HERE} with your twitch API client id
 	apiSelectionUrl: 'https://api.twitch.tv/kraken/games/top?client_id=kcrh2z2tj9qqs1asztf6n755zmwspns',  // replace the {CLIENT_ID_HERE} with your twitch API client id
 	showStreams: false,
 	showGamesBar: false,
 
 	init({
-		outerElement,
-		showStreams,
-		showGamesBar = false
+		showStreams = false,
+		showGamesBar = false,
+		...others
 	}){
 		this.showStreams = showStreams;
 		this.showGamesBar = showGamesBar;
-		this.initComponents(outerElement);
+		this.initComponents(others);
 		this.showStreams && this.getOnlineStreams();
 		this.showGamesBar && this.getGames();
 	},
@@ -44,6 +44,13 @@ const dataHandle = {
 	},
 
 	getOnlineStreams(){
+		if(this.activeTab == 'All'){
+            this.apiCallUrl = 'https://api.twitch.tv/kraken/streams?client_id=kcrh2z2tj9qqs1asztf6n755zmwspns'; //replace the {CLIENT_ID_HERE} with your twitch API client id
+        }else{
+			let gameName = this.activeTab.replace(/_/g,'%20');
+            this.apiCallUrl = `https://api.twitch.tv/kraken/streams?game=${gameName}&client_id=kcrh2z2tj9qqs1asztf6n755zmwspns`; //replace the {CLIENT_ID_HERE} with your twitch API client id
+		}
+			
 		// This call will render online streams for the selected game if no game is selected will display the most popular streams
 		this.loaderElement.style.display = "block";
 		this.handleApiCall(this.apiCallUrl, (response) => {

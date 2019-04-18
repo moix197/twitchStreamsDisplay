@@ -20,11 +20,18 @@ document.getElementsByTagName('body')[0].style.display = "block";
 //Update, now using Webpack, for minifiying and other s
 let App = Object.assign(Object.create(uiComponents),dataHandle);
 App.init({
-    outerElement: 'outerAppContainer',
-    //loaderImage: loaderImg,
-    showStreams: true,
+    parentElement: 'outerAppContainer',
+    //loaderImage: false,
+    initActiveGame: 'Dota_2',
     showGamesBar: true,
-    
+    showStreams: true,
+    streamsLimit: 12,
+    onStreamClick: {
+        //en openIn puedes pasar en una nueva ventana o pasar el id del container donde quieres que abra el stream clickeado
+        //openStreamIn: 'newTab'
+        //openStreamIn: 'outerAppContainer'
+    },
+    //closeStreamBtn: 'closeStreamButton'
 });
 
 

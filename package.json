@@ -1,5 +1,5 @@
 {
-  "name": "twitch_streams",
+  "name": "twitchStreamsDisplay",
   "version": "1.0.0",
   "description": "Display the twitch streams in your web, 100% editable css so it can match your web styles.",
   "scripts": {
@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/moix197/twitchStreamsDisplay/issues"
   },
-  "homepage": "https://moix197.github.io/twitch_streams",
+  "homepage": "https://moix197.github.io/twitchStreamsDisplay",
   "devDependencies": {
     "css-loader": "^2.1.1",
     "file-loader": "^3.0.1",
