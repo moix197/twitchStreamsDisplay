@@ -61,6 +61,7 @@ const uiComponents = {
 		document.getElementById('streamLiveVideoIframe').setAttribute('src', '');
 		document.getElementById('streamLiveVideoIframe').classList.remove('openedStream');
 		document.getElementById(this.closeStreamBtn).style.display = 'none';
+		document.getElementById('outerStreamsIframe').style.display = "none";
 	},
 
 	handleSelectionBtns(){
@@ -116,6 +117,7 @@ const uiComponents = {
 		var	channel = `https://player.twitch.tv/?channel=${streamId}`;
 		document.getElementById('streamLiveVideoIframe').setAttribute('src',channel);
 		document.getElementById('streamLiveVideoIframe').classList.add('openedStream');
+		document.getElementById('outerStreamsIframe').style.display = "block";
 		document.getElementById(this.closeStreamBtn).style.display = 'block';
 		document.getElementById('streamLiveVideoIframe').scrollIntoView({ behavior: 'smooth' });
 	},
@@ -192,6 +194,21 @@ const uiComponents = {
 	},
 
 	initialRender(){
+		if(this.openStreamIn && this.openStreamIn !== 'newTab'){
+			document.getElementById(this.closeStreamBtn).classList.add("closeStreamBtn");
+			let outerStreamsIframe = document.createElement('div');
+			outerStreamsIframe.setAttribute('id','outerStreamsIframe');
+			outerStreamsIframe.style.display = "none";
+			this.parentElement.append(outerStreamsIframe);
+
+			let streamLiveVideoIframe = document.createElement('iframe');
+			streamLiveVideoIframe.setAttribute('id','streamLiveVideoIframe');
+			streamLiveVideoIframe.setAttribute('frameborder','0');
+			streamLiveVideoIframe.setAttribute('scrolling','no');
+			streamLiveVideoIframe.setAttribute('allowfullscreen','true');
+			outerStreamsIframe.append(streamLiveVideoIframe);
+		}
+
 		if( this.showGamesBar ){
 			//if the option "showGamesBar" is passed as true in the new instance object
 			//we create the element and append it
@@ -211,6 +228,7 @@ const uiComponents = {
 			//we create the element and append it
 			let outerStreams = document.createElement('div');
 			outerStreams.setAttribute('id', 'outerStreams');
+			outerStreams.className = 'outerStreamsMultiple'
 			this.parentElement.append(outerStreams);
 
 			let outerStreamLoaderImg = document.createElement('div');
@@ -222,20 +240,6 @@ const uiComponents = {
 			StreamLoaderImg.setAttribute('id', 'loaderGif');
 			StreamLoaderImg.setAttribute('src', this.loaderImage);
 			outerStreamLoaderImg.append(StreamLoaderImg);
-		}
-
-		if(this.openStreamIn && this.openStreamIn !== 'newTab'){
-			let outerStreamsIframe = document.createElement('div');
-			outerStreamsIframe.setAttribute('id','outerStreamsIframe');
-			this.parentElement.append(outerStreamsIframe);
-
-			let streamLiveVideoIframe = document.createElement('iframe');
-			streamLiveVideoIframe.setAttribute('id','streamLiveVideoIframe');
-			streamLiveVideoIframe.setAttribute('frameborder','0');
-			streamLiveVideoIframe.setAttribute('scrolling','no');
-			streamLiveVideoIframe.setAttribute('allowfullscreen','true');
-			outerStreamsIframe.append(streamLiveVideoIframe);
-
 		}
 	},
 

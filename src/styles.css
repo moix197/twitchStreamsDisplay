@@ -1,4 +1,3 @@
-/* Just for testing purposes CSS disregard this when using in your build*/
 body{
 	font-family: 'Roboto', sans-serif;
 	background-color: #1c1c1c;
@@ -6,70 +5,66 @@ body{
 	color: #fff;
 }
 
-h5, p{
-	padding: 0;
-	margin: 0;
-}
-
-h1{
-	text-transform: uppercase;
-}
-
 .text-center{
 	text-align: center;
 	color: #fff;
 }
 
-button{
+button.selectionBtn{
 	background-color: transparent;
 	border: none;
 	color: #fff;
-	font-size: 16px;
 	font-weight: bold;
-	cursor: pointer;
+	font-size: 20px;
 	outline: none;
+	cursor: pointer;
 }
 
 button.selectedGame,
-button:hover{
+button.selectedGame:hover{
 	color: #a9ff00;
-}
-
-button:active{
+	border: 1px solid #a9ff00;
+	background-color: transparent;
+	border: none;
+	font-weight: bold;
 	outline: none;
 }
 
-.outerStreams{
-	display: block;
-	text-align: center;
+button.selectedGame:active{
+	outline: none;
+}
+
+.outerStreamsMultiple{
+	width: calc(100% - 40px);
+	padding: 0 20px;
+	display: inline-grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+	grid-auto-flow: dense;
+	grid-gap: 20px;
 }
 
 .singleStream{
 	background-color: #1c1c1c;
 	border: 1px solid #808080;
 	display: flex;
-	float: left;
-	height: 180px;
-	margin: 0.2%;
-	width: calc(32.9% - 2px);
+	width: 100%;
 	cursor: pointer;
 	transition: box-shadow 0.5s, border 0.5s;
+	flex-flow: column;
+	height: auto
 }
 
 .singleStream:hover{
 	border: 1px solid #a9ff00;
-	-webkit-box-shadow: 0px 0px 4px 0px rgba(169,255,0,1);
-	-moz-box-shadow: 0px 0px 4px 0px rgba(169,255,0,1);
-	box-shadow: 0px 0px 4px 0px rgba(169,255,0,1);
 }
 
 .outerImageStream{
+	width: 100%;
 	overflow: hidden;
 }
 
 .outerImageStream img{
-	min-width: 100%;
-	min-height: 100%;
+	width: 100%
 }
 
 .streamDetails{
@@ -81,6 +76,12 @@ button:active{
 
 .streamDetails div{
 	padding-bottom: 5px;
+}
+
+.streamDetails h5, 
+.streamDetails p{
+	padding: 0;
+	margin: 0;
 }
 
 .titleName{
@@ -101,12 +102,15 @@ button:active{
 }
 
 #outerGameSelection{
-	display: flex;
-	justify-content: center;
+	width: calc(100% - 40px);
+	display: inline-grid;
+	grid-template-columns: repeat(auto-fit, minmax(50px,1fr));
+	grid-gap: 20px;
+	padding: 20px;
 }
 
 #outerGameSelection img{
-	margin: 10px;
+	width: 100%;
 	cursor: pointer;
 	transition: box-shadow 0.5s, border 0.5s;
 	border: 1px solid #1c1c1c;
@@ -115,9 +119,6 @@ button:active{
 img.selectedGame,
 #outerGameSelection img:hover{
 	border: 1px solid #a9ff00 !important;
-	-webkit-box-shadow: 0px 0px 4px 0px rgba(169,255,0,1);
-	-moz-box-shadow: 0px 0px 4px 0px rgba(169,255,0,1);
-	box-shadow: 0px 0px 4px 0px rgba(169,255,0,1);
 }
 
 #outerGameSelection div:hover{
@@ -143,7 +144,7 @@ img.selectedGame,
 }
 
 .openedStream,
-iframe{
+.outerStreamsIframe iframe{
 	display: block;
 	width: 1280px;
 	height: 720px;
@@ -151,101 +152,11 @@ iframe{
 }
 /* End of Iframe */
 
-.closeStreamBtn{
+button.closeStreamBtn{
 	display: none;
+	margin: 0 auto;
 	background-color: #a9ff00;
-	color: #1c1c1c;
-	margin:0 auto;
-	padding: 15px;
-	border: 1px solid #1c1c1c;
-	margin-bottom: 5px;
-}
-
-.closeStreamBtn:hover{
-	background-color: #1c1c1c;
-	color: #a9ff00;
-	border: 1px solid #a9ff00;
-}
-
-/* Responsive Rules */
-@media screen and (max-width:1650px) {
-	
-	.singleStream{
-		width: calc(49.6% - 2px);
-	}
-
-	.outerGameSelection{
-		max-width: 70%;
-	}
-	
-	#outerGameSelection{
-		display: block;
-		width: 100%;
-	}
-
-	#outerGameSelection button{
-		width: 100%;
-		height: 30px;
-	}
-
-	#outerGameSelection img{
-		width: calc(9% - 2px);
-		margin: 1%;
-	}
-
-}
-
-@media screen and (max-width:1279px) {
-	.openedStream,
-	iframe{
-		width: 760px;
-		height: 428px;
-	}
-}
-
-@media screen and (max-width:1100px) {
-	
-	.singleStream{
-		margin:1.5%;
-		width: calc(30.3% - 2px);
-		flex-flow: column;
-		height: auto
-	}
-
-	.streamDetails{
-		height: 140px;
-	}
-
-}
-
-@media screen and (max-width:759px) {
-	
-	.singleStream{
-		width: calc(47% - 2px);
-	}
-	
-	#outerGameSelection img{
-		width: calc(17% - 2px);
-		margin: 1.5%;
-	}
-
-	.openedStream,
-	iframe{
-		width: 520px;
-		height: 293px;
-	}
-}
-
-@media screen and (max-width:520px) {
-	
-	.singleStream{
-		margin: 4%;
-		width: calc(92% - 2px);
-	}
-
-	.openedStream,
-	iframe{
-		width: 100%;
-	}
-
+	border: none;
+	padding: 20px;
+	cursor: pointer;
 }

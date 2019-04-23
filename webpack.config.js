@@ -3,8 +3,10 @@ const path = require('path');
 module.exports = {
     entry: './src/main.js',
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: 'twitch_streams.js',
+        path: path.resolve(__dirname, 'dist'),
+        libraryTarget: 'var',
+        library: 'twitch_streams'        
     },
     module: {
         rules:[
